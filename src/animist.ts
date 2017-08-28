@@ -18,9 +18,9 @@ interface AuthenticationInfo {
    */
   expires_in: number,
   /*
-   * The refresh token used to refresh the access token
+   * The token type
    */
-  refreshToken: string;
+  token_type: string,
 }
 
 // noinspection JSUnusedGlobalSymbols
@@ -104,16 +104,14 @@ export default class Animist {
    * @public
    */
   public async get(route: string, urlParams: object): Promise<any> {
-    if (!this.authInfo) {
+    if (!this.authInfo || Date.now() > this.authInfo.expires) {
       await this.authenticate();
-    } else if (Date.now() > this.authInfo.expires) {
-      await this.refreshToken();
     }
 
     const response = await axios({
-        baseURL: 'https://animist.co/api/',
+        baseURL: 'https://anilist.co/api/',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
         method: 'get',
         params: Object.assign({
@@ -131,9 +129,9 @@ export default class Animist {
    */
   private async authenticate() {
     const response = await axios({
-      baseURL: 'https://animist.co/api/',
+      baseURL: 'https://anilist.co/api/',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
       method: 'post',
       params: {
@@ -143,30 +141,6 @@ export default class Animist {
       },
       url: 'auth/access_token',
     });
-
-    this.authInfo = response.data;
-  }
-
-  /*
-   * Refresh the access token, if the request fails re-authenticate
-   */
-  private async refreshToken() {
-    let response;
-
-    try {
-      response = await axios({
-        baseURL: 'https://animist.co/api/',
-        method: 'post',
-        params: {
-          grant_type: 'refresh_token',
-          client_id: this.id,
-          client_secret: this.secret,
-        },
-        url: 'auth/access_token',
-      });
-    } catch (e) {
-      return this.authenticate();
-    }
 
     this.authInfo = response.data;
   }
