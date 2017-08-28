@@ -1,5 +1,5 @@
+[![ci-badge]][ci] [![docs-badge][]][docs]
 # animist
-
 Animist is a Typescript Library which makes interacting with the 
 AniList Api simple.
 
@@ -51,5 +51,9 @@ Available params can be found on [AniLists Documentation Website][anilist].
 This project is [licensed under ISC][license].
 
 [anilist]: http://anilist-api.readthedocs.io/en/latest/index.html
+[ci]: https://travis-ci.org/hsiW/animist.ts
+[ci-badge]: https://travis-ci.org/hsiW/animist.ts.svg?branch=master
+[docs]: https://hsiw.github.io/animist.ts/
+[docs-badge]: https://img.shields.io/badge/docs-online-5023dd.svg
 [developer]: https://anilist.co/settings/developer
 [license]: https://github.com/hsiW/animist.ts/blob/master/LICENSE
