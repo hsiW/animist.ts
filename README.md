@@ -53,7 +53,5 @@ This project is [licensed under ISC][license].
 [anilist]: http://anilist-api.readthedocs.io/en/latest/index.html
 [ci]: https://travis-ci.org/hsiW/animist.ts
 [ci-badge]: https://travis-ci.org/hsiW/animist.ts.svg?branch=master
-[docs]: https://hsiw.github.io/animist.ts/
-[docs-badge]: https://img.shields.io/badge/docs-online-5023dd.svg
 [developer]: https://anilist.co/settings/developer
 [license]: https://github.com/hsiW/animist.ts/blob/master/LICENSE
