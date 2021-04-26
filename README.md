@@ -1,4 +1,4 @@
-[![ci-badge]][ci] [![docs-badge][]][docs]
+[![ci-badge]][ci]
 # animist
 Animist is a Typescript Library which makes interacting with the 
 AniList Api simple.
